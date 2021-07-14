@@ -95,7 +95,12 @@ class Game:
             elif self.table[0][2] == self.table[1][1] == self.table[2][0]:
                 winner = self.table[0][2]
             else:
-                winner = 'Draw'
+                blank = 0
+                for i in self.table:
+                    for j in i: 
+                        if j == '': blank+=1
+                if blank == 0: 
+                    winner = 'Draw'
             self.winner = winner
             self.save()
             return winner

@@ -29,6 +29,10 @@ def movement(id):
         message = jsonify(msg="Não é turno do jogador")
         response = make_response(message, 400)
         return response
+      if not data["position"]["x"] in range(3) and not data["position"]["y"] in range(3):
+        message = jsonify(msg="Movimento inválido.")
+        response = make_response(message, 400)
+        return response
       valid = game.movement(data['player'].upper(), data['position']['x'], data['position']['y'])
       if(valid):
         message = jsonify(msg="Movimento Concluido")
